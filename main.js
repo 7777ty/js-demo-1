@@ -1,3 +1,4 @@
-var div = document.createElement('div')
+let div = document.createElement('div');
+div.className = 'demo'
 
-document.body.appendChild(div)
+document.body.appendChild(div);
