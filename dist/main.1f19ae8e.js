@@ -118,10 +118,48 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"main.js":[function(require,module,exports) {
-var div = document.createElement('div');
-div.className = 'demo';
-document.body.appendChild(div);
-},{}],"C:/Users/呀哈哈/AppData/Roaming/npm-cache/_npx/7484/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+var div1 = document.createElement('div');
+div1.className = 'demo';
+div1.style.top = 'auto';
+document.body.appendChild(div1);
+var dragging = false;
+var lastX;
+var lastY;
+
+div1.onmousedown = function (e) {
+  lastX = e.clientX;
+  lastY = e.clientY;
+  dragging = true;
+};
+
+document.onmousemove = function (e) {
+  if (dragging === true) {
+    var deltaX = e.clientX - lastX;
+    var deltaY = e.clientY - lastY;
+    var top = parseInt(div1.style.top) || 0;
+    var left = parseInt(div1.style.left) || 0;
+    var resultY = top + deltaY;
+    var resultX = left + deltaX;
+
+    if (resultY < 0) {
+      resultY = 0;
+    }
+
+    if (resultX < 0) {
+      resultX = 0;
+    }
+
+    div1.style.top = resultY + 'px';
+    div1.style.left = resultX + 'px';
+    lastX = e.clientX;
+    lastY = e.clientY;
+  }
+};
+
+document.onmouseup = function () {
+  dragging = false;
+};
+},{}],"C:/Users/呀哈哈/AppData/Roaming/npm-cache/_npx/15344/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -149,7 +187,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64973" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51365" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -324,5 +362,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["C:/Users/呀哈哈/AppData/Roaming/npm-cache/_npx/7484/node_modules/parcel/src/builtins/hmr-runtime.js","main.js"], null)
+},{}]},{},["C:/Users/呀哈哈/AppData/Roaming/npm-cache/_npx/15344/node_modules/parcel/src/builtins/hmr-runtime.js","main.js"], null)
 //# sourceMappingURL=/main.1f19ae8e.js.map
